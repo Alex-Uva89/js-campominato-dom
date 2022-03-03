@@ -75,6 +75,17 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 PSEUDOCODICE:
 */
 // funzione per creare 16 numeri casuali su tot caselle casuali (variabile da modificare successivamente)
+function creBombeRandom(min, max, quanteCaselleVincenti){
+    const arrBombe = []
+    while () {
+        for (let indexBombe = 1; indexBombe < arrBombe; indexBombe++)
+    } {
+        let bombe = Math.floor(Math.random() * (max - min) + min);
+        
+    }
+
+
+}
 
 // applicare la funziona ad ogni difficoltà con la variabile generica precedente (forse this?)
 
