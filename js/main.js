@@ -76,15 +76,15 @@ PSEUDOCODICE:
 */
 // funzione per creare 16 numeri casuali su tot caselle casuali (variabile da modificare successivamente)
 function creBombeRandom(min, max, quanteCaselleVincenti){
-    const arrBombe = []
-    while () {
-        for (let indexBombe = 1; indexBombe < arrBombe; indexBombe++)
-    } {
+    const arrBombe = ''
+    for (let indexBombe = 1; indexBombe < quanteCaselleVincenti.length; indexBombe++) {
         let bombe = Math.floor(Math.random() * (max - min) + min);
-        
+        while (arrBombe.includes(bombe)) {
+            bombe = Math.floor(Math.random() * (max - min) + min);
+        }
+        arrBombe.push(bombe);
     }
-
-
+    return arrBombe;
 }
 
 // applicare la funziona ad ogni difficoltà con la variabile generica precedente (forse this?)
