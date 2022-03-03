@@ -13,12 +13,15 @@ btnPlay.addEventListener('click', function(){
     pJoke.classList.add('remove');
     if (btnSelect.value == 'easy'){
         clickEasy();
+        creBombeRandom(1, 16, 100);
         btnClear.classList.remove('remove');
     } else if (btnSelect.value == 'medium'){
         clickMedium();
+        creBombeRandom(1, 16, 81);
         btnClear.classList.remove('remove');
     } else if (btnSelect.value == 'hard'){
         clickHard();
+        creBombeRandom(1, 16, 49);
         btnClear.classList.remove('remove');
     } else {
         areaContainBoxes.innerHTML = '<h2 class= "size">Questa non è una difficoltà :( </h2></i>'
@@ -76,15 +79,15 @@ PSEUDOCODICE:
 */
 // funzione per creare 16 numeri casuali su tot caselle casuali (variabile da modificare successivamente)
 function creBombeRandom(min, max, quanteCaselleVincenti){
-    const arrBombe = ''
+    const vereBombe = []
+    const controlloBombe = []
     for (let indexBombe = 1; indexBombe < quanteCaselleVincenti.length; indexBombe++) {
         let bombe = Math.floor(Math.random() * (max - min) + min);
-        while (arrBombe.includes(bombe)) {
+        while (controlloBombe.includes(bombe)) {
             bombe = Math.floor(Math.random() * (max - min) + min);
         }
-        arrBombe.push(bombe);
+        vereBombe.push(bombe);
     }
-    return arrBombe;
 }
 
 // applicare la funziona ad ogni difficoltà con la variabile generica precedente (forse this?)
