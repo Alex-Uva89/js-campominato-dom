@@ -66,15 +66,21 @@ function clickEasy(){
 }
 
 function colorBox() {
-    let caselBox = document.querySelectorAll('.save');
-    for (let i = 0; i < caselBox.length ; i++) {
-        caselBox[i].addEventListener('click', function(){
-            caselBox[i].classList.add('select');
-        });
-        caselBox[i].addEventListener('click', function(){
-            caselBox[i].classList.add('select');
-        });
+    let saveBox = document.querySelectorAll('.save');
+    let bombBox = document.querySelectorAll('bomb')
+    
+    for (let i = 0; i < saveBox.length ; i++) {
+        saveBox[i].addEventListener('click', function(){
+            saveBox[i].classList.add('select');
+        });   
     }
+    for (let i = 0; i < bombBox.length ; i++) {
+        bombBox[i].addEventListener('click', function(){
+            bombBox[i].classList.add('select');
+        });   
+    }
+
+    
 }
 
 btnClear.addEventListener('click', function(){
