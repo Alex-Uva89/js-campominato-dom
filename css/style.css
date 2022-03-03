@@ -102,6 +102,6 @@ footer{
     background-color: rgb(0, 110, 255);
 }
 
-#error{
+.error{
     background-color: red;
 }

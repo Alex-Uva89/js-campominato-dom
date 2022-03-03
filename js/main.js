@@ -13,15 +13,12 @@ btnPlay.addEventListener('click', function(){
     pJoke.classList.add('remove');
     if (btnSelect.value == 'easy'){
         clickEasy();
-        creBombeRandom(1, 16, 100);
         btnClear.classList.remove('remove');
     } else if (btnSelect.value == 'medium'){
-        clickMedium();
-        creBombeRandom(1, 16, 81);
+        clickMedium(); 
         btnClear.classList.remove('remove');
     } else if (btnSelect.value == 'hard'){
         clickHard();
-        creBombeRandom(1, 16, 49);
         btnClear.classList.remove('remove');
     } else {
         areaContainBoxes.innerHTML = '<h2 class= "size">Questa non è una difficoltà :( </h2></i>'
@@ -31,31 +28,49 @@ btnPlay.addEventListener('click', function(){
 
 function clickHard(){
     areaContainBoxes.innerHTML = '';
+    const posizioneDefinitivaBombe = creBombeRandom(100, 16);
     for (let i = 1; i <= 100; i++) {
-    areaContainBoxes.innerHTML += `<div class="box hard">${i}</div>`   
+        if (posizioneDefinitivaBombe.includes(i)){
+            areaContainBoxes.innerHTML += `<div class="box hard">${i}</div>`;   
+        } else {
+            areaContainBoxes.innerHTML += `<div class="box hard ">${i}</div>`;
+        }
     }
     colorBox();
 }
 
 function clickMedium(){
     areaContainBoxes.innerHTML = '';
+    const posizioneDefinitivaBombe = creBombeRandom(81, 16);
     for (let i = 1; i <= 81; i++) {
-    areaContainBoxes.innerHTML += `<div class="box medium">${i}</div>`   
+        if (posizioneDefinitivaBombe.includes(i)){
+            areaContainBoxes.innerHTML += `<div class="box medium">${i}</div>`;   
+        } else {
+            areaContainBoxes.innerHTML += `<div class="box medium ">${i}</div>`;
+        }
     }
     colorBox();
 }
 
 function clickEasy(){
     areaContainBoxes.innerHTML = '';
+    const posizioneDefinitivaBombe = creBombeRandom(49, 16);
     for (let i = 1; i <= 49; i++) {
-    areaContainBoxes.innerHTML += `<div class="box easy">${i}</div>`   
+        if (posizioneDefinitivaBombe.includes(i)){
+            areaContainBoxes.innerHTML += `<div class="box easy ">${i}</div>`;   
+        } else {
+            areaContainBoxes.innerHTML += `<div class="box easy save">${i}</div>`;
+        }
     }
     colorBox();
 }
 
 function colorBox() {
-    let caselBox = document.querySelectorAll('.box');
+    let caselBox = document.querySelectorAll('.save');
     for (let i = 0; i < caselBox.length ; i++) {
+        caselBox[i].addEventListener('click', function(){
+            caselBox[i].classList.add('select');
+        });
         caselBox[i].addEventListener('click', function(){
             caselBox[i].classList.add('select');
         });
@@ -78,17 +93,21 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 PSEUDOCODICE:
 */
 // funzione per creare 16 numeri casuali su tot caselle casuali (variabile da modificare successivamente)
-function creBombeRandom(min, max, quanteCaselleVincenti){
-    const vereBombe = []
-    const controlloBombe = []
-    for (let indexBombe = 1; indexBombe < quanteCaselleVincenti.length; indexBombe++) {
-        let bombe = Math.floor(Math.random() * (max - min) + min);
-        while (controlloBombe.includes(bombe)) {
-            bombe = Math.floor(Math.random() * (max - min) + min);
+function creBombeRandom(maxCaselle, numBombe){
+    const posizioneBombe = [];
+    for (let indexBombe = 1; indexBombe <= numBombe ; indexBombe++) { //da 1 a 16
+        let bombaRandom = Math.floor(Math.random() * (maxCaselle - 1) + 1); // numero casuale su max caselle
+
+        while (posizioneBombe.includes(bombaRandom)) {
+            bombaRandom = Math.floor(Math.random() * (maxCaselle - 1) + 1);
         }
-        vereBombe.push(bombe);
+        posizioneBombe.push(bombaRandom);
+        // posizioneBombe[bombaRandom].classList.add('error');
     }
+    return posizioneBombe;
+
 }
+
 
 // applicare la funziona ad ogni difficoltà con la variabile generica precedente (forse this?)
 
